@@ -449,19 +449,22 @@
     });
 
 
-    box.addEventListener("keydown", (event) => {
+    box.addEventListener("input", () => {
+  box.value = box.value.replace(/\D/g, "").slice(0, 1);
 
-      if (
-        event.key === "Backspace" &&
-        !box.value &&
-        index > 0
-      ) {
-        pinBoxes[index - 1].focus();
-      }
+  pinError.textContent = "";
 
-    });
+  if (box.value && index < pinBoxes.length - 1) {
+    pinBoxes[index + 1].focus();
+  }
 
-  });
+  const allDigitsEntered = Array.from(pinBoxes)
+    .every(input => /^[0-9]$/.test(input.value));
+
+  if (allDigitsEntered) {
+    showDemoProcessing();
+  }
+});
 
 
   /* VERIFY MTN PIN */
