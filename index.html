@@ -4,26 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07536b">
-
   <title>Demo Verification</title>
 
   <style>
     :root {
       --teal: #07536b;
-      --background: #f2f3f5;
+      --bg: #f2f3f5;
       --muted: #68736c;
       --green: #087b45;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--background);
+      background: var(--bg);
       color: #202124;
     }
 
@@ -71,11 +68,11 @@
       background: #fff;
       border-radius: 34px;
       padding: 24px 19px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, .06);
+      box-shadow: 0 10px 28px rgba(0,0,0,.06);
     }
 
     h1 {
-      margin: 4px 0 22px;
+      margin: 4px 0 24px;
       text-align: center;
       color: var(--teal);
       font-size: 23px;
@@ -102,8 +99,8 @@
     }
 
     .flag {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       overflow: hidden;
       border: 1px solid #ddd;
@@ -112,35 +109,23 @@
       flex-direction: column;
     }
 
-    .stripe {
-      height: 16.666%;
-      width: 100%;
-    }
-
-    .black {
-      background: #000;
-    }
-
-    .yellow {
-      background: #f8d116;
-    }
-
-    .red {
-      background: #d90000;
-    }
+    .stripe { flex: 1; width: 100%; }
+    .black { background: #000; }
+    .yellow { background: #f8d116; }
+    .red { background: #d90000; }
 
     .bird {
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
-      width: 15px;
-      height: 15px;
+      transform: translate(-50%,-50%);
+      width: 17px;
+      height: 17px;
       border-radius: 50%;
       background: white;
       display: grid;
       place-items: center;
-      font-size: 9px;
+      font-size: 10px;
     }
 
     .field {
@@ -155,7 +140,6 @@
       left: 13px;
       padding: 0 5px;
       background: white;
-      color: #222;
       font-size: 13px;
     }
 
@@ -201,24 +185,14 @@
       background: #edf2ee;
     }
 
-    .note,
-    .message {
+    .note, .message {
       text-align: center;
       color: var(--muted);
     }
 
-    .note {
-      font-size: 12px;
-      margin: 18px 0 0;
-    }
-
-    .message {
-      margin: 0 0 20px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
+    .note { font-size: 12px; margin: 18px 0 0; }
+    .message { margin: 0 0 20px; }
+    .hidden { display: none !important; }
 
     .spinner {
       width: 42px;
@@ -231,9 +205,7 @@
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      to { transform: rotate(360deg); }
     }
 
     .success-icon {
@@ -249,40 +221,20 @@
     }
 
     @media (max-width: 360px) {
-      .header {
-        height: 235px;
-      }
-
-      .card {
-        padding: 21px 14px;
-        border-radius: 29px;
-      }
-
-      h1 {
-        font-size: 21px;
-      }
-
-      .flag-box {
-        flex-basis: 61px;
-        height: 65px;
-      }
-
-      input {
-        height: 65px;
-        padding: 10px;
-      }
+      .header { height: 235px; }
+      .card { padding: 21px 14px; border-radius: 29px; }
+      h1 { font-size: 21px; }
+      .flag-box { flex-basis: 61px; height: 65px; }
+      input { height: 65px; padding: 10px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .spinner {
-        animation-duration: 2s;
-      }
+      .spinner { animation-duration: 2s; }
     }
   </style>
 </head>
 
 <body>
-
   <header class="header">
     <div class="brand">
       <div class="brand-icon" aria-hidden="true">✓</div>
@@ -293,13 +245,104 @@
 
   <main class="card">
 
-    <!-- PAGE 1: TEST NUMBER -->
+    <!-- PAGE 1 -->
     <section id="phoneScreen">
       <h1>Welcome</h1>
 
       <form id="phoneForm">
         <div class="phone-row">
-
           <div class="flag-box" aria-label="Uganda flag">
             <div class="flag" aria-hidden="true">
-              <div class="stripe black"></
+              <div class="stripe black"></div>
+              <div class="stripe yellow"></div>
+              <div class="stripe red"></div>
+              <div class="stripe black"></div>
+              <div class="stripe yellow"></div>
+              <div class="stripe red"></div>
+              <div class="bird">🐦</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="testNumber">Test number *</label>
+            <input
+              id="testNumber"
+              type="tel"
+              inputmode="tel"
+              autocomplete="off"
+              placeholder="e.g. 700000000"
+              maxlength="20"
+              required
+            >
+          </div>
+        </div>
+
+        <p class="note">
+          Demo only. Do not enter financial PINs or confidential information.
+        </p>
+      </form>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section id="stepTwo" class="hidden" aria-live="polite">
+      <h1>Demo — Step 2</h1>
+      <p class="message">
+        Continue through this sample verification experience.
+      </p>
+      <button type="button" id="continueTwo">Continue</button>
+      <button type="button" class="secondary" data-back="phoneScreen">
+        Back
+      </button>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section id="stepThree" class="hidden" aria-live="polite">
+      <h1>Demo — Step 3</h1>
+      <p class="message">
+        This sample page does not require a financial PIN.
+      </p>
+      <button type="button" id="finishDemo">Finish Demo</button>
+      <button type="button" class="secondary" data-back="stepTwo">
+        Back
+      </button>
+    </section>
+
+    <!-- WAITING -->
+    <section id="waitingScreen" class="hidden" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1>Waiting for Approval</h1>
+      <p class="message">
+        This is a local simulation. No request is sent to Telegram.
+      </p>
+      <button type="button" id="approveButton">Simulate Approval</button>
+      <button type="button" class="secondary" id="declineButton">
+        Simulate Decline
+      </button>
+    </section>
+
+    <!-- SUCCESS -->
+    <section id="successScreen" class="hidden" aria-live="polite">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h1>Demo Complete</h1>
+      <p class="message">
+        You have completed the demonstration.
+      </p>
+      <button type="button" id="restartButton">Start Again</button>
+    </section>
+
+  </main>
+
+  <button type="button" class="bottom-button" id="nextButton">
+    NEXT
+  </button>
+
+  <script>
+    const screenIds = [
+      "phoneScreen",
+      "stepTwo",
+      "stepThree",
+      "waitingScreen",
+      "successScreen"
+    ];
+
+    const
