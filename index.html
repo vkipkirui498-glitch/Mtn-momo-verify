@@ -1,101 +1,115 @@
-
-PE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07536b">
+
   <title>Demo Verification</title>
 
   <style>
+    :root {
+      --teal: #07536b;
+      --background: #f2f3f5;
+      --muted: #68736c;
+      --green: #087b45;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f3f5;
-      color: #173f50;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: #202124;
     }
 
     .header {
-      height: 285px;
-      background: #07536b;
+      height: 260px;
+      background: var(--teal);
       border-radius: 0 0 50% 50% / 0 0 12% 12%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding-bottom: 35px;
+      justify-content: center;
+      padding-bottom: 30px;
     }
 
-    .logo {
+    .brand {
       text-align: center;
       color: #ffd52a;
-      font-size: 26px;
-      font-weight: bold;
+      font-size: 25px;
+      font-weight: 700;
     }
 
-    .logo-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 13px;
-      background: #06445a;
-      border: 2px solid #12617a;
+    .brand-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 9px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      margin: 0 auto 10px;
-      font-size: 30px;
+      background: #06445a;
+      border: 2px solid #12617a;
+      font-size: 28px;
     }
 
-    .logo small {
+    .brand small {
       display: block;
-      font-size: 11px;
+      font-size: 10px;
+      margin-top: 3px;
+      letter-spacing: .7px;
     }
 
     .card {
-      width: calc(100% - 36px);
-      max-width: 440px;
-      margin: -40px auto 0;
+      width: calc(100% - 32px);
+      max-width: 430px;
+      margin: -38px auto 0;
       position: relative;
-      background: white;
-      padding: 25px 20px;
-      border-radius: 42px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      background: #fff;
+      border-radius: 34px;
+      padding: 24px 19px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .06);
     }
 
     h1 {
+      margin: 4px 0 22px;
       text-align: center;
-      font-size: 25px;
-      margin: 5px 0 28px;
-      color: #07536b;
+      color: var(--teal);
+      font-size: 23px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .phone-row {
       display: flex;
-      gap: 12px;
       align-items: center;
+      gap: 11px;
     }
 
     .flag-box {
-      width: 76px;
-      height: 76px;
-      flex-shrink: 0;
+      flex: 0 0 70px;
+      height: 70px;
       border: 1px solid #333;
-      border-radius: 23px;
+      border-radius: 21px;
       display: grid;
       place-items: center;
     }
 
-    /* Round Uganda flag */
     .flag {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       overflow: hidden;
       border: 1px solid #ddd;
+      position: relative;
       display: flex;
       flex-direction: column;
-      position: relative;
     }
 
     .stripe {
@@ -103,11 +117,19 @@ PE html>
       width: 100%;
     }
 
-    .black { background: #000; }
-    .yellow { background: #f8d116; }
-    .red { background: #d90000; }
+    .black {
+      background: #000;
+    }
 
-    .crane {
+    .yellow {
+      background: #f8d116;
+    }
+
+    .red {
+      background: #d90000;
+    }
+
+    .bird {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -118,135 +140,166 @@ PE html>
       background: white;
       display: grid;
       place-items: center;
-      font-size: 10px;
+      font-size: 9px;
     }
 
-    .phone-field {
-      flex: 1;
-      min-width: 0;
+    .field {
       position: relative;
+      min-width: 0;
+      flex: 1;
     }
 
-    .phone-field label {
+    .field label {
       position: absolute;
-      top: -10px;
-      left: 16px;
-      background: white;
+      top: -8px;
+      left: 13px;
       padding: 0 5px;
-      font-size: 14px;
+      background: white;
       color: #222;
+      font-size: 13px;
     }
 
     input {
       width: 100%;
-      height: 76px;
-      padding: 14px;
+      min-width: 0;
+      height: 70px;
       border: 1px solid #555;
-      border-radius: 25px;
-      font-size: 17px;
+      border-radius: 22px;
+      padding: 12px;
+      font-size: 16px;
       outline-color: #1680ce;
     }
 
-    .note {
-      margin: 22px 0 0;
-      text-align: center;
-      color: #69757b;
-      font-size: 13px;
-      line-height: 1.6;
+    button {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 15px;
+      border: 0;
+      border-radius: 28px;
+      background: var(--teal);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
-    .next {
-      width: calc(100% - 36px);
-      max-width: 440px;
-      margin: 40px auto 20px;
+    button:focus-visible {
+      outline: 3px solid #80b9c8;
+      outline-offset: 3px;
+    }
+
+    .bottom-button {
       display: block;
-      height: 56px;
-      border: none;
-      border-radius: 32px;
-      background: #07536b;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
+      width: calc(100% - 32px);
+      max-width: 430px;
+      margin: 30px auto 20px;
+    }
+
+    .secondary {
+      margin-top: 10px;
+      color: #24332b;
+      background: #edf2ee;
+    }
+
+    .note,
+    .message {
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .note {
+      font-size: 12px;
+      margin: 18px 0 0;
+    }
+
+    .message {
+      margin: 0 0 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+      margin: 14px auto 20px;
+      border: 4px solid #dce9e3;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .success-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #e5f5eb;
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 29px;
     }
 
     @media (max-width: 360px) {
+      .header {
+        height: 235px;
+      }
+
       .card {
-        padding: 22px 14px;
-        border-radius: 32px;
+        padding: 21px 14px;
+        border-radius: 29px;
       }
 
       h1 {
-        font-size: 22px;
+        font-size: 21px;
       }
 
       .flag-box {
-        width: 64px;
-        height: 68px;
+        flex-basis: 61px;
+        height: 65px;
       }
 
       input {
-        height: 68px;
+        height: 65px;
         padding: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner {
+        animation-duration: 2s;
       }
     }
   </style>
 </head>
 
 <body>
+
   <header class="header">
-    <div class="logo">
-      <div class="logo-icon">✓</div>
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">✓</div>
       Demo
       <small>VERIFICATION</small>
     </div>
   </header>
 
   <main class="card">
-    <h1>Welcome</h1>
 
-    <form id="demoForm">
-      <div class="phone-row">
-        <div class="flag-box" aria-label="Uganda flag">
-          <div class="flag">
-            <div class="stripe black"></div>
-            <div class="stripe yellow"></div>
-            <div class="stripe red"></div>
-            <div class="stripe black"></div>
-            <div class="stripe yellow"></div>
-            <div class="stripe red"></div>
-            <div class="crane">🐦</div>
-          </div>
-        </div>
+    <!-- PAGE 1: TEST NUMBER -->
+    <section id="phoneScreen">
+      <h1>Welcome</h1>
 
-        <div class="phone-field">
-          <label for="phone">Test number *</label>
-          <input
-            id="phone"
-            type="tel"
-            inputmode="tel"
-            placeholder="e.g. 700000000"
-            autocomplete="off"
-            required
-          >
-        </div>
-      </div>
+      <form id="phoneForm">
+        <div class="phone-row">
 
-      <p class="note">
-        Demo interface only. Do not enter financial PINs
-        or other confidential information.
-      </p>
-    </form>
-  </main>
-
-  <button class="next" type="submit" form="demoForm">
-    NEXT
-  </button>
-
-  <script>
-    document.getElementById("demoForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Demo layout is working!");
-    });
-  </script>
-</body>
-</html>
+          <div class="flag-box" aria-label="Uganda flag">
+            <div class="flag" aria-hidden="true">
+              <div class="stripe black"></
