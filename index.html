@@ -2,224 +2,286 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07516a">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087b45">
+
   <title>Demo Verification</title>
+
   <style>
-    :root { --teal:#07516a; --teal-dark:#064a61; --yellow:#ffcc00; --bg:#f2f3f5; }
-    * { box-sizing:border-box; margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; }
-    body { min-height:100vh; background:var(--bg); display:flex; justify-content:center; color:#222; }
-    .app { width:100%; max-width:520px; min-height:100vh; position:relative; overflow:hidden; background:var(--bg); padding-bottom:26px; }
-    .hero { height:365px; background:var(--teal); border-radius:0 0 50% 12%; display:flex; justify-content:flex-start; align-items:center; flex-direction:column; padding-top:105px; color:#fff; }
-    .brand-icon { width:68px; height:68px; border-radius:13px; background:linear-gradient(145deg,#0a6883,#033d56); border:2px solid #0b4051; box-shadow:0 3px 5px #00374866; display:flex; align-items:center; justify-content:center; color:var(--yellow); font-size:34px; font-weight:800; }
-    .brand-name { color:var(--yellow); font-size:29px; font-weight:800; margin-top:7px; }
-    .brand-sub { color:var(--yellow); font-size:12px; font-weight:700; }
-    .card { position:relative; margin:-55px 24px 0; padding:34px 24px 30px; border-radius:48px; background:white; box-shadow:0 12px 35px #001a2512; }
-    h1 { text-align:center; color:var(--teal); font-size:28px; margin:4px 0 32px; }
-    .subtext { color:#68737a; font-size:15px; line-height:1.5; text-align:center; margin:-17px 0 26px; }
-    .label { display:block; font-size:16px; margin:0 0 8px 5px; }
-    .number-row { display:flex; gap:14px; align-items:center; }
-    .flag { height:76px; width:82px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border:1px solid #333; border-radius:25px; font-size:34px; }
-    .field-wrap { flex:1; min-width:0; position:relative; }
-    .field-wrap input { width:100%; height:76px; border:1.5px solid #444; border-radius:26px; padding:0 18px; font-size:21px; outline:none; }
-    input:focus,.code:focus { border-color:#2780d7; box-shadow:0 0 0 4px #2780d72a; }
-    .code-title { text-align:center; font-size:21px; font-weight:700; margin:8px 0 18px; }
-    .code-boxes { display:flex; justify-content:center; gap:10px; margin:0 auto 18px; }
-    .code { width:53px; height:66px; border:2px solid #dedfe2; border-radius:17px; text-align:center; font-size:25px; outline:none; background:#fff; }
-    .code:focus { border-color:#2780d7; }
-    .button { width:100%; min-height:58px; border:0; border-radius:30px; background:var(--teal); color:white; font-size:18px; font-weight:800; cursor:pointer; margin-top:25px; }
-    .button:disabled { opacity:.65; cursor:wait; }
-    .error { color:#b3261e; min-height:18px; font-size:14px; margin:10px 0 0; text-align:center; }
-    .terms { text-align:center; color:#69757b; font-size:15px; line-height:1.6; margin:30px 35px; }
-    .terms strong { color:var(--teal); }
-    .screen { display:none; }
-    .processing,.success { text-align:center; padding:16px 4px 10px; }
-    .spinner { width:54px; height:54px; border:5px solid #e6eaec; border-top-color:var(--teal); border-radius:50%; animation:spin .8s linear infinite; margin:8px auto 25px; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .processing h2,.success h2 { color:var(--teal); font-size:24px; margin-bottom:12px; }
-    .processing p,.success p { color:#68737a; font-size:16px; line-height:1.55; }
-    .success-mark { width:70px; height:70px; margin:0 auto 20px; border-radius:50%; display:grid; place-items:center; background:#e2f4e8; color:#218447; font-size:42px; }
-    .demo-note { margin-top:22px; color:#69757b; font-size:12px; line-height:1.5; text-align:center; }
-    @media(max-width:380px) { .card { margin-left:15px; margin-right:15px; padding:28px 17px; } .code-boxes { gap:7px; } .code { width:48px; height:60px; } h1 { font-size:25px; } }
+    :root {
+      --green: #087b45;
+      --green-dark: #056337;
+      --background: #f3f6f4;
+      --text: #202824;
+      --muted: #68736c;
+      --border: #dce4df;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 18px 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 340px;
+      padding: 24px 20px;
+      background: var(--white);
+      border: 1px solid #e9eeeb;
+      border-radius: 16px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.055);
+      text-align: center;
+    }
+
+    .brand {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #e6f5ec;
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .description {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .field {
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: 2px solid rgba(8, 123, 69, 0.15);
+      border-color: var(--green);
+    }
+
+    button {
+      width: 100%;
+      min-height: 44px;
+      padding: 11px 14px;
+      border: none;
+      border-radius: 9px;
+      background: var(--green);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--green-dark);
+    }
+
+    button:focus-visible {
+      outline: 3px solid #8ac9a8;
+      outline-offset: 2px;
+    }
+
+    .secondary {
+      margin-top: 10px;
+      background: #edf2ee;
+      color: var(--text);
+    }
+
+    .secondary:hover {
+      background: #e1e9e3;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .demo-notice {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+      margin: 20px auto;
+      border: 4px solid #e1eee6;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .status-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e6f5ec;
+      color: var(--green);
+      font-size: 28px;
+    }
+
+    .status-message {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #8a948e;
+      font-size: 11px;
+    }
+
+    @media (max-width: 360px) {
+      .card {
+        padding: 20px 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner {
+        animation-duration: 2s;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <main class="app">
-    <header class="hero">
-      <div class="brand-icon" aria-hidden="true">✓</div>
-      <div class="brand-name">Demo Verify</div>
-      <div class="brand-sub">INDEPENDENT DEMO APPLICATION</div>
-    </header>
+  <main class="card">
 
-    <section class="card screen" id="phoneScreen" style="display:block">
-      <h1>Welcome</h1>
-      <p class="subtext">Enter your phone number to start a demo verification request.</p>
-      <label class="label" for="phone">Phone number *</label>
-      <div class="number-row">
-        <div class="flag" aria-label="Uganda">🇺🇬</div>
-        <div class="field-wrap"><input id="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="9" placeholder="e.g. 778260583"></div>
-      </div>
-      <p class="error" id="phoneError" role="alert"></p>
-      <button class="button" id="continueBtn">NEXT</button>
-      <p class="demo-note">Demo only. This site is not affiliated with MTN or any mobile-money provider. Never enter your mobile-money PIN here.</p>
+    <!-- Phone number screen -->
+    <section id="phoneScreen">
+      <div class="brand" aria-hidden="true">✓</div>
+
+      <h1>Demo Verification</h1>
+
+      <p class="description">
+        Enter a test phone number to try the verification flow.
+      </p>
+
+      <form id="phoneForm">
+        <div class="field">
+          <label for="phone">Test phone number</label>
+
+          <input
+            id="phone"
+            type="tel"
+            inputmode="tel"
+            autocomplete="off"
+            placeholder="e.g. 0712 345 678"
+            maxlength="20"
+            required
+          >
+        </div>
+
+        <button type="submit">Continue</button>
+      </form>
+
+      <p class="demo-notice">
+        Demo only. Do not enter real financial credentials.
+      </p>
     </section>
 
-    <section class="card screen" id="codeScreen">
-      <h1>Verify your number</h1>
-      <p class="subtext">This independent demo uses a test verification code, not your financial PIN.</p>
-      <p class="code-title">Enter your 5-digit demo code</p>
-      <div class="code-boxes" aria-label="Five-digit demo verification code">
-        <input class="code" inputmode="numeric" maxlength="1" aria-label="Digit 1" autocomplete="one-time-code">
-        <input class="code" inputmode="numeric" maxlength="1" aria-label="Digit 2">
-        <input class="code" inputmode="numeric" maxlength="1" aria-label="Digit 3">
-        <input class="code" inputmode="numeric" maxlength="1" aria-label="Digit 4">
-        <input class="code" inputmode="numeric" maxlength="1" aria-label="Digit 5">
-      </div>
-      <p class="error" id="codeError" role="alert"></p>
-      <button class="button" id="verifyBtn">REQUEST APPROVAL</button>
-      <button class="button" id="backBtn" style="background:#e8eef0;color:#07516a;margin-top:12px">BACK</button>
-      <p class="demo-note">The code is checked only for format and is never sent to Telegram or stored.</p>
+    <!-- Test code screen -->
+    <section id="codeScreen" class="hidden">
+      <div class="brand" aria-hidden="true">✓</div>
+
+      <h1>Enter Test Code</h1>
+
+      <p class="description">
+        Enter the demo code <strong>00000</strong> to continue.
+      </p>
+
+      <form id="codeForm">
+        <div class="field">
+          <label for="testCode">Five-digit demo code</label>
+
+          <input
+            id="testCode"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="5"
+            pattern="[0-9]{5}"
+            placeholder="00000"
+            required
+          >
+        </div>
+
+        <button type="submit">Submit Demo Code</button>
+
+        <button
+          class="secondary"
+          type="button"
+          id="backButton"
+        >
+          Back
+        </button>
+      </form>
+
+      <p class="demo-notice">
+        This test page does not send entered codes to Telegram or a server.
+      </p>
     </section>
 
-    <section class="card screen" id="waitingScreen" aria-live="polite">
-      <div class="processing">
-        <div class="spinner" aria-hidden="true"></div>
-        <h2>Waiting for approval</h2>
-        <p>Your demo request has been sent to the administrator. Keep this page open while the request is reviewed.</p>
-        <p class="error" id="waitingError" role="status"></p>
-        <button class="button" id="cancelBtn" style="background:#e8eef0;color:#07516a">CANCEL</button>
-      </div>
-    </section>
+    <!-- Waiting screen -->
+    <section id="waitingScreen" class="hidden" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
 
-    <section class="card screen" id="successScreen">
-      <div class="success">
-        <div class="success-mark" aria-hidden="true">✓</div>
-        <h2>Approval successful</h2>
-        <p>Your demo verification request was approved.</p>
-        <button class="button" id="restartBtn">DONE</button>
-      </div>
-    </section>
-    <p class="terms">Demo application · <strong>Privacy first</strong></p>
-  </main>
-<script>
-  const $ = id => document.getElementById(id);
-  const phoneInput = $('phone');
-  const codeBoxes = [...document.querySelectorAll('.code')];
-  let requestId = null;
-  let pollTimer = null;
-  let submittedPhone = '';
+      <h1>Waiting for Approval</h1>
 
-  function showScreen(id) {
-    document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
-    $(id).style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  function stopPolling() {
-    if (pollTimer) clearInterval(pollTimer);
-    pollTimer = null;
-  }
-  function resetCode() {
-    codeBoxes.forEach(box => box.value = '');
-    $('codeError').textContent = '';
-    $('verifyBtn').disabled = false;
-    $('verifyBtn').textContent = 'REQUEST APPROVAL';
-  }
-
-  phoneInput.addEventListener('input', () => {
-    phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 9);
-    $('phoneError').textContent = '';
-  });
-  $('continueBtn').addEventListener('click', () => {
-    const phone = phoneInput.value.trim();
-    if (!/^\d{9}$/.test(phone)) {
-      $('phoneError').textContent = 'Enter a 9-digit demo phone number.';
-      return;
-    }
-    submittedPhone = phone;
-    resetCode();
-    showScreen('codeScreen');
-    codeBoxes[0].focus();
-  });
-  codeBoxes.forEach((box, index) => {
-    box.addEventListener('input', () => {
-      box.value = box.value.replace(/\D/g, '').slice(-1);
-      if (box.value && index < codeBoxes.length - 1) codeBoxes[index + 1].focus();
-      $('codeError').textContent = '';
-      // Automatically submit once the final digit is entered.
-      if (index === codeBoxes.length - 1 && box.value) requestApproval();
-    });
-    box.addEventListener('keydown', event => {
-      if (event.key === 'Backspace' && !box.value && index > 0) codeBoxes[index - 1].focus();
-      if (event.key === 'Enter') requestApproval();
-    });
-    box.addEventListener('paste', event => {
-      const pasted = (event.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 5);
-      if (!pasted) return;
-      event.preventDefault();
-      pasted.split('').forEach((digit, i) => { if (codeBoxes[i]) codeBoxes[i].value = digit; });
-      codeBoxes[Math.min(pasted.length, 4)].focus();
-      if (pasted.length === 5) requestApproval();
-    });
-  });
-
-  async function requestApproval() {
-    const demoCode = codeBoxes.map(box => box.value).join('');
-    if (!/^\d{5}$/.test(demoCode)) {
-      $('codeError').textContent = 'Enter all 5 digits of the demo test code.';
-      return;
-    }
-    $('verifyBtn').disabled = true;
-    $('verifyBtn').textContent = 'SENDING…';
-    try {
-      const response = await fetch('/api/requests', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone: submittedPhone, hasFiveDigits: true })
-      });
-      const data = await response.json();
-      if (!response.ok || !data.success) throw new Error(data.message || 'Unable to request approval.');
-      requestId = data.requestId;
-      $('waitingError').textContent = '';
-      showScreen('waitingScreen');
-      startPolling();
-    } catch (error) {
-      $('codeError').textContent = error.message || 'Could not connect to the demo server.';
-      $('verifyBtn').disabled = false;
-      $('verifyBtn').textContent = 'REQUEST APPROVAL';
-    }
-  }
-  $('verifyBtn').addEventListener('click', requestApproval);
-
-  function startPolling() {
-    stopPolling();
-    let failures = 0;
-    pollTimer = setInterval(async () => {
-      if (!requestId) return;
-      try {
-        const response = await fetch(`/api/requests/${encodeURIComponent(requestId)}`, { cache: 'no-store' });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Request expired.');
-        failures = 0;
-        if (data.status === 'approved') {
-          stopPolling(); requestId = null; showScreen('successScreen');
-        } else if (data.status === 'declined') {
-          stopPolling(); requestId = null; resetCode();
-          $('codeError').textContent = 'Request declined. Please enter a new demo code and try again.';
-          showScreen('codeScreen'); codeBoxes[0].focus();
-        }
-      } catch (error) {
-        failures++;
-        if (failures >= 3) {
-          stopPolling(); requestId = null;
-          $('waitingError').textContent = 'Could not check the request status. Return and try again.';
-        }
-      }
-    }, 1800);
-  }
-  $('backBtn').addEventListener('click', () => { stopPolling(); showScreen('phoneScreen'); });
-  $('cancelBtn').addEventListener('click', () => { stopPolling(); requestId = null; resetCode(); showScreen('codeScreen'); });
-  $('restartBtn').addEventListener('click', () => {
-    stopPolling(); requestId = null; submittedPhone = ''; phoneInput.value = ''; resetCode(); showScreen('phoneScreen');
-  });
-</script>
-</body>
-</html>
+      <p class="description">
+       
