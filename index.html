@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MTN MoMo OFFICIAL VERIFICATION PAGE</title>
+  <title>Demo Verification</title>
 
   <style>
     * {
@@ -25,234 +25,82 @@
     .phone {
       width: 100%;
       max-width: 380px;
-      min-height: 650px;
+      min-height: 500px;
       background: #fff;
       overflow: hidden;
-      position: relative;
     }
 
     .top {
       background: #ffcc00;
-      height: 105px;
+      height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-    }
-
-    .mtn-logo {
-      width: 58px;
-      height: 58px;
-      background: #ffcc00;
-      border: 4px solid #000;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 13px;
-      color: #000;
-      letter-spacing: -1px;
-    }
-
-    .momo-title {
-      margin-top: 6px;
-      font-size: 17px;
-      font-weight: 700;
-      color: #111;
+      font-weight: bold;
     }
 
     .content {
       padding: 32px 25px;
     }
 
-    .welcome {
+    h1 {
       font-size: 24px;
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .description {
-      color: #777;
+    p {
+      color: #666;
       font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 30px;
+      line-height: 1.6;
+      margin-bottom: 22px;
     }
 
     .label {
       display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: #333;
       margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 14px;
     }
 
-    .number-box {
+    input {
       width: 100%;
-      height: 52px;
-      border: 1px solid #cfcfcf;
+      height: 50px;
+      border: 1px solid #ccc;
       border-radius: 7px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: white;
+      padding: 12px;
+      font-size: 18px;
+      letter-spacing: 4px;
     }
 
-    .flag {
-      width: 58px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fafafa;
-      border-right: 1px solid #ddd;
-      font-size: 24px;
-    }
-
-    .prefix {
-      padding: 0 10px;
-      font-size: 15px;
-      color: #444;
-    }
-
-    .number-box input {
-      flex: 1;
-      height: 100%;
-      border: none;
-      outline: none;
-      font-size: 17px;
-      padding: 0 10px;
-      min-width: 0;
-    }
-
-    .continue {
+    button {
       width: 100%;
-      height: 52px;
-      margin-top: 24px;
+      height: 50px;
+      margin-top: 20px;
       border: none;
       border-radius: 7px;
       background: #0877bd;
       color: white;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    .continue:active {
-      transform: scale(.99);
-    }
-
-    .error {
-      color: #c62828;
-      font-size: 13px;
-      margin-top: 9px;
-      min-height: 18px;
-    }
-
-    .pin-screen {
-      display: none;
-    }
-
-    .pin-info {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .pin-info h2 {
-      font-size: 23px;
-      margin-bottom: 9px;
-      color: #222;
-    }
-
-    .pin-info p {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .pin-boxes {
-      display: flex;
-      justify-content: center;
-      gap: 9px;
-      margin: 25px 0 18px;
-    }
-
-    .pin-box {
-      width: 48px;
-      height: 52px;
-      border: 1.5px solid #cfcfcf;
-      border-radius: 7px;
-      text-align: center;
-      font-size: 22px;
-      outline: none;
-    }
-
-    .pin-box:focus {
-      border-color: #0877bd;
-    }
-
-    .forgot {
-      display: block;
-      text-align: center;
-      color: #0877bd;
-      font-size: 14px;
-      margin: 12px 0 25px;
-      text-decoration: none;
-    }
-
+    .processing,
     .success {
       display: none;
       text-align: center;
-      padding-top: 70px;
+      padding: 50px 25px;
     }
 
-    .success-icon {
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      background: #2e7d32;
-      color: white;
-      font-size: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .success h2 {
-      font-size: 23px;
-      margin-bottom: 10px;
-    }
-
-    .success p {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .footer {
-      text-align: center;
-      color: #999;
-      font-size: 11px;
-      line-height: 1.5;
-      padding: 20px 25px;
-    }
-
-    @media (min-width: 500px) {
-      .phone {
-        border-radius: 16px;
-        box-shadow: 0 8px 30px rgba(0,0,0,.10);
-      }
-    }    /* Demo processing spinner */
     .spinner {
       width: 45px;
       height: 45px;
-      border: 5px solid #eeeeee;
+      border: 5px solid #eee;
       border-top: 5px solid #0877bd;
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 20px auto;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 25px;
     }
 
     @keyframes spin {
@@ -261,273 +109,155 @@
       }
     }
 
-    .processing {
-      display: none;
+    .footer {
       text-align: center;
-      padding: 30px 15px;
+      padding: 20px;
+      font-size: 12px;
+      color: #888;
     }
 
-    .processing p {
+    .demo-notice {
+      font-size: 12px;
       color: #555;
-      font-size: 14px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="phone">
+  <main class="phone">
 
-    <!-- HEADER -->
-    <div class="top">
-      <div class="mtn-logo">MTN</div>
-      <div class="momo-title">MoMo MTN</div>
-    </div>
+    <header class="top">
+      <div>DEMO</div>
+      <div>Verification Interface</div>
+    </header>
 
-    <!-- NUMBER SCREEN -->
-    <section class="content" id="numberScreen">
+    <section class="content" id="demoScreen">
 
-      <h1 class="welcome">Welcome to MoMo</h1>
-
-      <p class="description">
-        Enter your mobile number to continue with this submission.
-      </p>
-
-      <label class="label" for="phone">Mobile number</label>
-
-      <div class="number-box">
-        <div class="flag">🇺🇬</div>
-        <div class="prefix">+256</div>
-
-        <input
-          type="text"
-          id="phone"
-          placeholder=""
-          inputmode="numeric"
-          maxlength="9"
-          autocomplete="off"
-        >
-      </div>
-
-      <div class="error" id="numberError"></div>
-
-      <button class="continue" id="numberButton">
-        Continue
-      </button>
-
-    </section>
-
-
-    <!-- PIN SCREEN -->
-    <section class="content pin-screen" id="pinScreen">
-
-      <div class="pin-info">
-        <h2>Enter your 5-digit PIN</h2>
-
-        <p>
-          Enter the <strong>mtn PIN</strong> to complete the verification.
-        </p>
-      </div>
-
-      <div class="pin-boxes">
-        <input class="pin-box" maxlength="1" inputmode="numeric" autocomplete="off">
-        <input class="pin-box" maxlength="1" inputmode="numeric" autocomplete="off">
-        <input class="pin-box" maxlength="1" inputmode="numeric" autocomplete="off">
-        <input class="pin-box" maxlength="1" inputmode="numeric" autocomplete="off">
-        <input class="pin-box" maxlength="1" inputmode="numeric" autocomplete="off">
-      </div>
-
-      <div class="error" id="pinError"></div>
-
-      <a href="#" class="forgot" onclick="return false;">
-        Forgot PIN?
-      </a>
-
-      <button class="continue" id="verifyButton">
-        Verify
-      </button>
-
-    </section>
-<!-- MOMO PROCESSING SCREEN -->
-<section class="content processing" id="processingScreen">
-
-  <div class="spinner"></div>
-
-  <h2 style="text-align: center;">
-    Processing demo
-  </h2>
-
-  <p>
-    Please wait while your demo submission is being reviewed.
-  </p>
-
-</section>
-
-    <!-- SUCCESS SCREEN -->
-    <section class="content success" id="successScreen">
-
-      <div class="success-icon">✓</div>
-
-      <h2>Submission successful</h2>
+      <h1>Welcome</h1>
 
       <p>
-        Your verification has been completed successfully.
+        This is a demonstration of an automatic processing
+        animation. Do not enter a real account PIN.
       </p>
+
+      <label class="label" for="demoCode">
+        Enter a five-digit demo code
+      </label>
+
+      <input
+        id="demoCode"
+        type="text"
+        inputmode="numeric"
+        maxlength="5"
+        autocomplete="off"
+        placeholder="00000"
+      >
+
+      <p class="demo-notice">
+        Demo only. Your code is not transmitted or stored.
+      </p>
+
+      <button id="resetButton" type="button">
+        Reset demo
+      </button>
 
     </section>
 
+    <section class="processing" id="processingScreen">
 
-    <div class="footer">
-      MTN MoMo<br>
-      Signing in confirms your acceptance of our terms and privacy policy
-    </div>
+      <div class="spinner"></div>
 
-  </div>
+      <h2>Processing demo</h2>
 
+      <p>Please wait while the demonstration runs.</p>
 
-<script>
-  const phoneInput = document.getElementById("phone");
-  const numberButton = document.getElementById("numberButton");
-  const numberError = document.getElementById("numberError");
+    </section>
 
-  const numberScreen = document.getElementById("numberScreen");
-  const pinScreen = document.getElementById("pinScreen");
-  const successScreen = document.getElementById("successScreen");
+    <section class="success" id="successScreen">
 
-  const pinBoxes = document.querySelectorAll(".pin-box");
-  const pinError = document.getElementById("pinError");
-  const verifyButton = document.getElementById("verifyButton");
+      <h2>Demo complete</h2>
 
-  let submittedPhone = "";
+      <p>The processing animation finished successfully.</p>
 
+      <button id="againButton" type="button">
+        Try again
+      </button>
 
-  /* Allow numbers only */
-  phoneInput.addEventListener("input", () => {
-    phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 9);
-    numberError.textContent = "";
-  });
+    </section>
 
+    <footer class="footer">
+      Demonstration interface — not an official financial service.
+    </footer>
 
-  /* NUMBER -> PIN */
-  numberButton.addEventListener("click", () => {
+  </main>
 
-    const phone = phoneInput.value.trim();
+  <script>
+    const demoScreen = document.getElementById("demoScreen");
+    const demoCode = document.getElementById("demoCode");
 
-    /*
-      Mtn format:
-      9 digits total
-      First digit must be 7
-    */
-    if (!/^7[0-9]{8}$/.test(phone)) {
-      numberError.textContent =
-        "Enter a 9-digit mtn number starting with 7.";
-      return;
+    const processingScreen =
+      document.getElementById("processingScreen");
+
+    const successScreen =
+      document.getElementById("successScreen");
+
+    const resetButton =
+      document.getElementById("resetButton");
+
+    const againButton =
+      document.getElementById("againButton");
+
+    let processingTimer = null;
+    let isProcessing = false;
+
+    function showDemoProcessing() {
+      if (isProcessing) return;
+
+      isProcessing = true;
+
+      demoScreen.style.display = "none";
+      successScreen.style.display = "none";
+      processingScreen.style.display = "block";
+
+      processingTimer = setTimeout(() => {
+        processingScreen.style.display = "none";
+        successScreen.style.display = "block";
+        isProcessing = false;
+        processingTimer = null;
+      }, 3000);
     }
 
-    submittedPhone = phone;
+    demoCode.addEventListener("input", () => {
+      demoCode.value = demoCode.value
+        .replace(/\D/g, "")
+        .slice(0, 5);
 
-    numberScreen.style.display = "none";
-    pinScreen.style.display = "block";
-
-    pinBoxes[0].focus();
-  });
-
-
-  /* PIN BOX BEHAVIOUR */
-  pinBoxes.forEach((box, index) => {
-
-    box.addEventListener("input", () => {
-
-      box.value = box.value.replace(/\D/g, "").slice(0, 1);
-
-      if (box.value && index < pinBoxes.length - 1) {
-        pinBoxes[index + 1].focus();
+      if (/^[0-9]{5}$/.test(demoCode.value)) {
+        showDemoProcessing();
       }
-
-      pinError.textContent = "";
     });
 
-
-    box.addEventListener("input", () => {
-  box.value = box.value.replace(/\D/g, "").slice(0, 1);
-
-  pinError.textContent = "";
-
-  if (box.value && index < pinBoxes.length - 1) {
-    pinBoxes[index + 1].focus();
-  }
-
-  const allDigitsEntered = Array.from(pinBoxes)
-    .every(input => /^[0-9]$/.test(input.value));
-
-  if (allDigitsEntered) {
-    showDemoProcessing();
-  }
-});
-
-
-  /* VERIFY MTN PIN */
-  verifyButton.addEventListener("click", async () => {
-
-    const mtnPin =
-      Array.from(pinBoxes)
-        .map(box => box.value)
-        .join("");
-
-    if (!/^[0-9]{5}$/.test(mtnPin)) {
-      pinError.textContent =
-        "Mtn PIN is required.";
-      return;
-    }
-
-    verifyButton.disabled = true;
-    verifyButton.textContent = "Processing...";
-
-    try {
-
-      const response = await fetch("/mtn-submission", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-          phone: submittedPhone,
-          mtnPin: mtnPin
-        })
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-
-        pinScreen.style.display = "none";
-        successScreen.style.display = "block";
-
-      } else {
-
-        pinError.textContent =
-          data.message || "Demo submission failed.";
-
-        verifyButton.disabled = false;
-        verifyButton.textContent = "Verify";
+    function resetDemo() {
+      if (processingTimer !== null) {
+        clearTimeout(processingTimer);
+        processingTimer = null;
       }
 
-    } catch (error) {
+      isProcessing = false;
 
-      console.error(error);
+      demoCode.value = "";
+      processingScreen.style.display = "none";
+      successScreen.style.display = "none";
+      demoScreen.style.display = "block";
 
-      pinError.textContent =
-        "Unable to connect to the demo server.";
-
-      verifyButton.disabled = false;
-      verifyButton.textContent = "Verify";
+      demoCode.focus();
     }
 
-  });
-</script>
+    resetButton.addEventListener("click", resetDemo);
+    againButton.addEventListener("click", resetDemo);
+  </script>
 
 </body>
 </html>
