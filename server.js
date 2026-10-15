@@ -2,6 +2,13 @@ const express = require("express");
 const path = require("path");
 const axios = require("axios");
 
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+const TELEGRAM_API = TELEGRAM_BOT_TOKEN
+  ? `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`
+  : null;
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
